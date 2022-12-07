@@ -1,0 +1,69 @@
+//ABC3V3 (liubolan add stop)
+slave_on
+fs400_stop_fs400_performance
+//cpld对FS400的SPI复位
+cpld_spi_wr 0x31 1
+
+//MPD V
+//fpga_spi_wr 0x3f 0 0x7
+fpga_spi_wr 0x8e 0 0x200
+\p
+
+//MPD ch
+fpga_spi_wr 0x30 0 0x0
+fpga_spi_wr 0x31 0 0x4
+fpga_spi_wr 0x32 0 0x0
+fpga_spi_wr 0x33 0 0x0
+fpga_spi_wr 0x34 0 0x4
+fpga_spi_wr 0x35 0 0x0
+
+//ABC point set
+set_init_bias 1700 2500
+
+//df
+fpga_spi_wr 0x7c 0 1
+fpga_spi_wr 0x79 0x0064 0x0332
+//bf
+//fpga_spi_wr 0x7c 0 0
+//fpga_spi_wr 0x79 0x14b 0x004b
+//fpga_spi_wr 0x7b 0 0x17
+fpga_spi_wr 0x78 0 0
+\p
+fpga_spi_wr 0x78 0 1
+
+//ITLA Cband 400G
+itla_wr 0 0x32 0
+itla_wr 0 0x34 0x02ee
+->"Write itla OK!."
+itla_wr 0 0x35 0xbf
+->"Write itla OK!."
+itla_wr 0 0x36 3125
+->"Write itla OK!."
+//itla_wr 0 0x30 0x05
+//15dB
+itla_wr 0 0x31 0x5dc
+->"Write itla OK!."
+\p
+itla_wr 0 0x32 0x08
+->"Write itla"
+\p
+\p
+itla_wr 0 0x32 0x08
+->"Write itla OK!."
+\p
+
+//scan_new
+//->"shell>"
+//\p
+
+
+//TIA pwr
+cpld_wr 0x7f 0x8
+set_adj 3 102
+set_adj 4 104
+en_adj 3 1
+en_adj 4 1
+
+
+
+End.

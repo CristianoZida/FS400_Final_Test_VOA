@@ -1,0 +1,32 @@
+//first DRVout
+cpld_wr 0x7f 0x9
+set_adj 5 82
+en_adj 5 1
+\p
+
+en_adj 5 0
+\p
+
+//VPN
+cpld_wr 0x7f 0x9
+en_adj 6 0
+\p
+
+//DRIVER VCC IN
+cpld_wr 0x7f 0x8
+set_adj 1 100
+en_adj 1 0
+\p
+
+//TIA pwr
+cpld_wr 0x7f 0x8
+en_adj 3 0
+en_adj 4 0
+
+//断电
+slave_off
+
+//关ITLA
+itla_wr 0 0x32 0
+
+End.

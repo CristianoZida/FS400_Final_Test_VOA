@@ -1,0 +1,53 @@
+//Test e0cf
+//fs400_drv_read 0x0401
+//->"0x00e0 0x00cf"
+//fs400_tia_read 0x0001
+//->"0x00e0 0x00cf"
+
+//DRIVER VCC IN
+cpld_wr 0x7f 0x8
+set_adj 1 100
+en_adj 1 1
+\p
+
+//first DRVout
+cpld_wr 0x7f 0x9
+set_adj 5 82
+en_adj 5 1
+\p
+
+//VPN
+cpld_wr 0x7f 0x9
+set_adj 6 21
+set_adj 6 1
+en_adj 6 1
+\p
+
+//输出开启
+//fs400_drv_write 0x041a 0x0601 1
+//SPI mode
+//fs400_drv_write 0x0410 0x0001 1
+
+//DRVout
+cpld_wr 0x7f 0x9
+set_adj 5 10
+en_adj 5 1
+\p
+set_adj 5 8
+\p
+set_adj 5 6
+\p
+set_adj 5 4
+\p
+set_adj 5 2
+\p
+set_adj 5 1
+\p
+
+//Driver Vccin
+cpld_wr 0x7f 0x8
+set_adj 1 93
+en_adj 1 1
+
+
+End.

@@ -1,0 +1,34 @@
+//ABC3V3 (liubolan add stop)
+slave_on
+fs400_stop_fs400_performance
+
+//cpld对FS400的SPI复位
+cpld_spi_wr 0x31 1
+
+//MPD V
+//fpga_spi_wr 0x3f 0 0x7
+fpga_spi_wr 0x8e 0 0x200
+\p
+
+//MPD ch
+fpga_spi_wr 0x30 0 0x0
+fpga_spi_wr 0x31 0 0x4
+fpga_spi_wr 0x32 0 0x0
+fpga_spi_wr 0x33 0 0x0
+fpga_spi_wr 0x34 0 0x4
+fpga_spi_wr 0x35 0 0x0
+
+//ABC point set
+//df
+//ITLA Cband 400G
+
+//TIA pwr
+cpld_wr 0x7f 0x8
+set_adj 3 102
+set_adj 4 104
+en_adj 3 1
+en_adj 4 1
+
+
+
+End.
